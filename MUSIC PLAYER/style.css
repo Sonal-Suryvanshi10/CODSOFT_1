@@ -781,6 +781,30 @@ body {
     transform: translateX(0);
   }
 
+   .sidebar-profile {
+    margin-top: 28px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-profile #profile-menu-button {
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 9px;
+    background: rgba(255,255,255,.07);
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .profile-menu {
+    top: 45px;
+    bottom: auto;
+    left: 0;
+    width: min(245px, calc(86vw - 36px));
+  }
+
+
   body.menu-open {
     overflow: hidden;
   }
