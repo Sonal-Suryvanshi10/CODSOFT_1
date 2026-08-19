@@ -11,6 +11,7 @@ import {
 // SIGN UP / LOGIN
 
 let currentUser = null;
+let authSubmittedThisVisit = false;
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -23,7 +24,7 @@ function setCurrentUser(user) {
 
     window.currentUser = currentUser;
 
-    // script.js is a separate ES module, so notify it whenever Firebase auth changes.
+
     window.dispatchEvent(new CustomEvent('sonora-auth-changed', {
         detail: currentUser
     }));
@@ -164,9 +165,8 @@ authToggle.addEventListener("click", function () {
 
 onAuthStateChanged(auth, (user)=>{
     setCurrentUser(user);
-    $('#auth-modal').hidden = !user;
+    $('#auth-modal').hidden = Boolean(user && authSubmittedThisVisit);
 });
-
 
 // ==============logout===========
 $('#logout').addEventListener('click', logout);
