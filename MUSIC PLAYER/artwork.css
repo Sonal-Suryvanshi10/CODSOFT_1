@@ -1,0 +1,108 @@
+.art-afterglow {
+  background:
+    radial-gradient(circle at 68% 25%, #ffd990 0 5%, transparent 6%),
+    linear-gradient(135deg, #ef8a69, #8f3e76 48%, #20234c);
+}
+
+.art-motion {
+  background:
+    radial-gradient(circle at 68% 32%, #d5df9a 0 7%, transparent 8%),
+    linear-gradient(140deg, #1e5268, #76bdb4 55%, #d2d58e);
+}
+
+.art-moons {
+  background:
+    radial-gradient(circle at 67% 27%, #f4d999 0 8%, transparent 9%),
+    radial-gradient(circle at 35% 48%, #a88bc7 0 17%, transparent 18%),
+    linear-gradient(135deg, #1d1d43, #685187, #d2ad80);
+}
+
+.art-awake {
+  background:
+    radial-gradient(circle at 66% 31%, #fee0a3 0 9%, transparent 10%),
+    linear-gradient(135deg, #ca7c65, #d9b88d 53%, #516aa0);
+}
+
+.art-afterglow:after,
+.art-motion:after,
+.art-moons:after,
+.art-awake:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    0deg,
+    rgba(8, 7, 30, .7),
+    transparent 62%
+  );
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .45;
+    box-shadow: 0 0 0 7px rgba(244, 182, 85, .05);
+  }
+}
+
+.sidebar-profile {
+  position: relative;
+}
+
+.profile-menu {
+  position: absolute;
+  z-index: 5;
+  bottom: 50px;
+  left: 0;
+  width: 175px;
+  padding: 7px;
+  background: #242a40;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 10px;
+  box-shadow: 0 15px 30px #0007;
+}
+
+.profile-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #eef0f5;
+  font: 500 12px var(--font);
+  cursor: pointer;
+}
+
+.profile-menu button:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+.toast {
+  position: fixed;
+  z-index: 9;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%, 18px);
+  opacity: 0;
+  pointer-events: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background: #f4b655;
+  color: #161421;
+  font: 600 12px var(--font);
+  transition: .22s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+body.high-contrast {
+  --bg: #050608;
+  --text: #fff;
+  --muted: #d3d7e1;
+  --line: rgba(255, 255, 255, .22);
+}

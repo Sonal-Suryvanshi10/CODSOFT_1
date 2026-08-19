@@ -1,0 +1,132 @@
+.nav-link {
+  border: 0;
+  width: 100%;
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+.liked-count {
+  margin-left: auto;
+  min-width: 18px;
+  padding: 2px 5px;
+  border-radius: 10px;
+  background: rgba(244, 182, 85, .18);
+  color: var(--accent);
+  font-size: 10px;
+}
+
+.music-search {
+  display: flex;
+  gap: 10px;
+  padding: 20px 0 10px;
+}
+
+.music-search input,
+.auth-card input {
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 8px;
+  background: #1b2035;
+  color: #fff;
+  font: 500 13px var(--font);
+  outline: none;
+}
+
+.music-search input {
+  flex: 1;
+  padding: 12px 14px;
+}
+
+.music-search button,
+.auth-card > button:not(.auth-switch) {
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #191725;
+  padding: 0 18px;
+  font: 700 12px var(--font);
+  cursor: pointer;
+}
+
+.empty-state {
+  color: #9097a8;
+  font-size: 13px;
+  margin: 24px 0;
+}
+
+.auth-modal {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(5, 7, 16, .82);
+  backdrop-filter: blur(8px);
+}
+
+.auth-modal[hidden] {
+  display: none;
+}
+
+.auth-card {
+  width: min(100%, 380px);
+  padding: 34px;
+  background: #171c31;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 16px;
+  box-shadow: 0 25px 60px #0009;
+  display: grid;
+  gap: 12px;
+}
+
+.auth-card > .brand-mark {
+  margin-bottom: 5px;
+}
+
+.auth-card p {
+  margin: 0;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.auth-card h2 {
+  font: 600 29px/1.05 'Playfair Display', serif;
+  margin: 0 0 8px;
+}
+
+.auth-card input {
+  padding: 12px;
+}
+
+.auth-card > button:not(.auth-switch) {
+  min-height: 42px;
+  margin-top: 4px;
+}
+
+.auth-switch {
+  border: 0;
+  background: transparent;
+  color: #b6bdcc;
+  font: 500 12px var(--font);
+  cursor: pointer;
+  padding: 5px;
+}
+
+.auth-card small {
+  color: #747d93;
+  line-height: 1.4;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+@media (max-width: 590px) {
+  .music-search {
+    gap: 7px;
+  }
+
+  .music-search button {
+    padding: 0 13px;
+  }
+}

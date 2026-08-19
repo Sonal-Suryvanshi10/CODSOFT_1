@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1020" />
+  <title>Sonora — Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="artwork.css" />
+  <link rel="stylesheet" href="features.css" />
+  <link rel="stylesheet" href="playlists.css" />
+</head>
+<body>
+
+  
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="Sonora home"><span class="brand-mark">S</span><span>sonora</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link active" href="#top"><svg><use href="#icon-home" /></svg>Home</a>
+        <button id="library-link" class="nav-link"><svg><use href="#icon-library" /></svg>Your Library</button>
+        <button id="liked-link" class="nav-link"><svg><use href="#icon-heart" /></svg>Liked Songs <span id="liked-count" class="liked-count">0</span></button>
+        <button id="uploads-link" class="nav-link"><svg><use href="#icon-library" /></svg>My uploads</button>
+      </nav>
+      <div class="playlist-links">
+        <p>Your playlists</p>
+        <button class="create-playlist"><span>+</span> Create playlist</button>
+        <div id="custom-playlists" class="custom-playlists"></div>
+        <a id="default-playlist-link" href="#playlist">Late Night Drive</a>
+        <!-- <a href="#playlist">Sunday Morning</a>
+        <a href="#playlist">Focus Flow</a> -->
+      </div>
+      <div class="sidebar-profile">
+      <div id="avatar" class="avatar">S</div><span id="profile-name">Guest</span><button id="profile-menu-button" aria-label="Profile menu" aria-expanded="false">•••</button>
+      <div id="profile-menu" class="profile-menu" hidden>
+        <button id="upload-song">Add local song</button>
+        <button id="add-current-to-playlist">Add current song to playlist</button>
+        <button id="theme-toggle">Toggle contrast</button><button id="clear-likes">Clear liked songs</button>
+        <button id="logout">Log out</button></div>
+      </div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">S</span>sonora</div>
+        <div class="greeting"><p id="greeting-text">Welcome</p><h2>Make this moment yours.</h2></div>
+        <button id="mobile-menu" class="icon-button menu-button" aria-label="Open menu" aria-expanded="false"><svg><use href="#icon-menu" /></svg></button>
+      </header>
+
+      <section class="hero-grid" aria-label="Now playing">
+        <div class="artwork-wrap">
+          <div id="album-art" class="album-art art-aurora"><span class="art-shine"></span><span class="art-title">AURORA</span><span class="art-subtitle">in the stillness</span></div>
+          <div class="art-caption"><span id="vinyl-dot"></span><span>Now playing</span></div>
+        </div>
+        <div class="track-area">
+          <div class="track-tags"><span>SONORA SESSIONS</span><span>•</span><span>2026</span></div>
+          <h2 id="track-title">Midnight Bloom</h2>
+          <p id="track-artist">Elara Voss <span>·</span> In The Stillness</p>
+          <button id="like-button" class="like-button" aria-label="Like this song"><svg><use href="#icon-heart" /></svg><span>Save to liked songs</span></button>
+          <div class="progress-section">
+            <div class="progress-times"><span id="current-time">0:00</span><span id="duration">3:42</span></div>
+            <input id="progress" class="range progress" type="range" min="0" max="100" value="0" aria-label="Song progress" />
+          </div>
+          <div class="controls">
+            <button id="shuffle" class="control-button small" aria-label="Shuffle"><svg><use href="#icon-shuffle" /></svg></button>
+            <button id="previous" class="control-button" aria-label="Previous song"><svg><use href="#icon-previous" /></svg></button>
+            <button id="play" class="play-button" aria-label="Play"><svg><use href="#icon-play" /></svg></button>
+            <button id="next" class="control-button" aria-label="Next song"><svg><use href="#icon-next" /></svg></button>
+            <button id="repeat" class="control-button small" aria-label="Repeat"><svg><use href="#icon-repeat" /></svg></button>
+          </div>
+          <div class="volume-row"><button id="mute" class="volume-button" aria-label="Mute"><svg><use href="#icon-volume" /></svg></button><input id="volume" class="range volume" type="range" min="0" max="1" step="0.01" value="0.75" aria-label="Volume" /></div>
+        </div>
+      </section>
+
+      <section id="playlist" class="playlist-section">
+        <div class="section-heading"><div><p>PLAYLIST</p><h2>Late Night Drive</h2></div><button id="play-all" class="play-all">Play all <svg><use href="#icon-play" /></svg></button></div>
+        <div class="track-list" id="track-list" role="list"></div>
+      </section>
+
+      <section id="library" class="playlist-section search-section">
+        <div class="section-heading"><div><p>MUSIC SEARCH</p><h2>Discover something new</h2></div></div>
+        <form id="music-search" class="music-search"><input id="search-query" type="search" placeholder="Search artists, albums, songs…" required /><button>Search</button></form>
+        <div id="search-results" class="track-list" role="list"></div>
+      </section>
+
+      <section id="liked" class="playlist-section">
+        <div class="section-heading"><div><p>YOUR COLLECTION</p><h2>Liked Songs</h2></div><button id="play-liked" class="play-all">Play liked <svg><use href="#icon-play" /></svg></button></div>
+        <p id="liked-empty" class="empty-state">Tap the heart on any song to save it here.</p>
+        <div id="liked-list" class="track-list" role="list"></div>
+      </section>
+
+      <section id="uploads" class="playlist-section">
+        <div class="section-heading"><div><p>YOUR LIBRARY</p><h2>Your uploads</h2></div></div>
+        <p id="uploads-empty" class="empty-state">Your uploaded songs will appear here.</p>
+        <div id="uploads-list" class="track-list" role="list"></div>
+      </section>
+    </main>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+  <input id="file-picker" type="file" accept="audio/*" hidden />
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!--  login signup -->
+  <div id="auth-modal" class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <form id="auth-form" class="auth-card"><span class="brand-mark">S</span><p>WELCOME TO SONORA</p><h2 id="auth-title">Create your listening space</h2>
+    <input id="auth-name" placeholder="Your name" required />
+    <input id="auth-email" type="email" placeholder="Email address" required />
+    <input id="auth-password" type="password" minlength="6" placeholder="Password (minimum 6 characters)" required />
+    <button id="auth-submit">Create account</button>
+    <button id="auth-toggle" type="button" class="auth-switch">Already have an account? Log in</button></form>
+  </div>
+  <div id="playlist-modal" class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="playlist-title" hidden>
+    <form id="playlist-form" class="auth-card"><span class="brand-mark">+</span><p>YOUR LIBRARY</p><h2 id="playlist-title">Create a playlist</h2>
+    <input id="playlist-name" placeholder="Playlist name" required maxlength="40" /><button>Create playlist</button>
+    <button id="playlist-cancel" type="button" class="auth-switch">Cancel</button></form>
+  </div>
+
+  <svg class="svg-defs" aria-hidden="true">
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="icon-library" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM9 8h6M9 12h6M9 16h3"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></symbol>
+    <symbol id="icon-next" viewBox="0 0 24 24"><path d="m6 5 9 7-9 7ZM17 5v14"/></symbol>
+    <symbol id="icon-previous" viewBox="0 0 24 24"><path d="m18 5-9 7 9 7ZM7 5v14"/></symbol>
+    <symbol id="icon-shuffle" viewBox="0 0 24 24"><path d="M3 7h3c4 0 5 10 9 10h6M18 14l3 3-3 3M3 17h3c1.3 0 2.2-.9 3-2M18 4l3 3-3 3M14 7h7"/></symbol>
+    <symbol id="icon-repeat" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+    <symbol id="icon-volume" viewBox="0 0 24 24"><path d="M4 10h4l5-4v12l-5-4H4zM16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></symbol>
+  </svg>
+</body>
+
+<script type="module" src="auth.js"></script>
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js?v=3"></script>
+
+</html>

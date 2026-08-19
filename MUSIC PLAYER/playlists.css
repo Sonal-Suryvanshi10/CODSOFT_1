@@ -1,0 +1,40 @@
+.custom-playlists {
+  display: grid;
+  gap: 12px;
+}
+
+.custom-playlist {
+  border: 0;
+  background: transparent;
+  color: #abb0c0;
+  text-align: left;
+  font: 500 13px var(--font);
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.custom-playlist:hover {
+  color: #fff;
+}
+
+.playlist-message {
+  margin: 18px 0;
+  color: #a5aabc;
+  font-size: 13px;
+}
+
+.playlist-track-actions {
+  margin: 10px 0;
+  display: flex;
+  gap: 8px;
+}
+
+.playlist-track-actions button {
+  background: rgba(244, 182, 85, .12);
+  color: var(--accent);
+  border: 1px solid rgba(244, 182, 85, .25);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font: 600 11px var(--font);
+  cursor: pointer;
+}
